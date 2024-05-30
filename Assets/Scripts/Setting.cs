@@ -24,15 +24,11 @@ public class Setting : MonoBehaviour
 
     public void ActiveSetting()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (objKeySet.activeSelf==false&&Input.GetKeyDown(KeyCode.Escape))
         {
             if(objSetting.activeSelf == false)
             {
                 objSetting.SetActive(true);
-            }
-            else
-            {
-                objSetting.SetActive(false);
             }
         }
     }

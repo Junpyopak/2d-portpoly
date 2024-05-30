@@ -17,7 +17,7 @@ public class GameStart : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(1);
         }
     }
 }

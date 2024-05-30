@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Onclick : MonoBehaviour
 {
-
     public void onclick()
     {
         switch(this.gameObject.name)
         {
             case "Exit":
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
+                break;
+            case "Resmue":
+
                 break;
 
         }

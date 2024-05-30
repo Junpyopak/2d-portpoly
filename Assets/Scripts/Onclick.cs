@@ -5,29 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Onclick : MonoBehaviour
 {
+    public GameObject sc;
+    // Start is called before the first frame update
+    void Start()
+    {
+         sc.GetComponent<Setting>().ActiveSetting();
+    }
+
     public void onclick()
     {
-        switch(this.gameObject.name)
+        switch (this.gameObject.name)
         {
             case "Exit":
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("TitleScene");
                 break;
             case "Resmue":
-
                 break;
 
         }
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        onclick();
     }
 }

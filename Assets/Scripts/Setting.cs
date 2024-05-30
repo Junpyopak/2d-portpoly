@@ -19,7 +19,7 @@ public class Setting : MonoBehaviour
         ActiveSetting();
     }
 
-    private void ActiveSetting()
+    public void ActiveSetting()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

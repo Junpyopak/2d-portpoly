@@ -55,4 +55,10 @@ public class Setting : MonoBehaviour
         objSetting.SetActive(false);
         objKeySet.SetActive(true );
     }
+
+    public void Check()
+    {
+        objKeySet.SetActive(false);
+        objSetting.SetActive(true);
+    }
 }

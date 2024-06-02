@@ -12,6 +12,7 @@ public class Setting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         objSetting.SetActive(false);
         objKeySet.SetActive(false);
     }
@@ -29,6 +30,7 @@ public class Setting : MonoBehaviour
             if(objSetting.activeSelf == false)
             {
                 objSetting.SetActive(true);
+                Time.timeScale = 0;
             }
         }
     }
@@ -43,6 +45,7 @@ public class Setting : MonoBehaviour
         if(objSetting.activeSelf == true)
         {
             objSetting.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 

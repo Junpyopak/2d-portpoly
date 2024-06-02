@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     Animator anim;
     public bool isGround = false;
     Vector2 movePos;
+    [SerializeField] float JumpForce = 3;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
     {
         moving();
         CheckGround();
+        Jumping();
     }
 
     private void moving()
@@ -49,5 +52,22 @@ public class Player : MonoBehaviour
         {
             isGround = true;
         }
+        else
+        {
+            isGround = false;
+        }
     }
+     private void Jumping()
+    {
+        if(isGround == true && Input.GetKeyDown(KeyCode.C))
+        {
+            anim.SetBool("isJump", true);
+            rigid2d.velocity = Vector2.up * JumpForce;
+        }
+        else
+        {
+            anim.SetBool("isJump", false);
+        }
+    }
+
 }

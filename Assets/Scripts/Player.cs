@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         moving();
         CheckGround();
         Jumping();
+        Attack();
     }
 
     private void moving()
@@ -70,4 +71,26 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            //movePos.x = 0;
+            anim.SetBool("Atk", true);
+            Attack2();
+        }
+        else
+        {
+            anim.SetBool("Atk", false);
+            anim.SetBool("Atk2", false);
+        }
+    }
+
+    private void Attack2()
+    {
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            anim.SetBool("Atk2", true);
+        }
+    }
 }

@@ -77,20 +77,30 @@ public class Player : MonoBehaviour
         {
             //movePos.x = 0;
             anim.SetBool("Atk", true);
-            Attack2();
+            //if(Input.GetKeyDown(KeyCode.F))
+            //{
+            //    anim.SetBool("Atk2", true);
+            //}
+            
+
         }
         else
         {
             anim.SetBool("Atk", false);
-            anim.SetBool("Atk2", false);
+            //anim.SetBool("Atk2", false);
+
         }
     }
 
-    private void Attack2()
-    {
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            anim.SetBool("Atk2", true);
-        }
-    }
+    //private void Attack2()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.V))
+    //    {
+    //        anim.SetBool("Atk2", true);
+    //    }
+    //    else
+    //    {
+    //        anim.SetBool("Atk2", false);
+    //    }
+    //}
 }

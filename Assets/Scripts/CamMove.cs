@@ -8,6 +8,7 @@ public class CamMove : MonoBehaviour
     [SerializeField] float camSpeed = 1f;
     [SerializeField] GameObject player;
     Vector3 camPos;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,20 @@ public class CamMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         camMove();
+       
     }
 
     private void camMove()
     {
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3.1f, -10f) * camSpeed;
+    }
+
+    private void checkPos()
+    {
+        float height = camMain.orthographicSize;
+        float width = height * camMain.aspect;
+
     }
 }

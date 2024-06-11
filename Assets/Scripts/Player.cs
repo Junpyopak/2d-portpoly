@@ -12,6 +12,12 @@ public class Player : MonoBehaviour
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
     // Start is called before the first frame update
+
+    [SerializeField, Tooltip("화면 최소비율")] Vector2 minScreen;
+    [SerializeField, Tooltip("최대비율")] Vector2 maxScreen;
+    [SerializeField] Camera cam;
+    BoxCollider2D boxColl;
+
     private void Awake()
     {
         
@@ -20,12 +26,14 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
+        boxColl = GameObject.Find("MapCam").GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         moving();
+        //checkPos();
         CheckGround();
         Jumping();
         Attack();
@@ -114,5 +122,35 @@ public class Player : MonoBehaviour
     //    {
     //        anim.SetBool("attk2", false);
     //    }
+    //}
+
+    //private void checkPos()
+    //{
+    //    Vector2 curPos = cam.WorldToViewportPoint(transform.position);
+    //    if (curPos.x < minScreen.x)
+    //    {
+    //        curPos.x = minScreen.x;
+    //    }
+    //    else if (curPos.x > maxScreen.x)
+    //    {
+    //        curPos.x = maxScreen.x;
+    //    }
+
+    //    if (curPos.y < minScreen.y)
+    //    {
+    //        curPos.y = minScreen.y;
+    //    }
+    //    else if (curPos.y > maxScreen.y)
+    //    {
+    //        curPos.y = maxScreen.y;
+    //    }
+
+    //    Vector3 fixedPos = cam.ViewportToWorldPoint(curPos);
+    //    transform.position = fixedPos;
+    //}
+
+    //private void checkPosi()
+    //{
+
     //}
 }

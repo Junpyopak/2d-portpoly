@@ -248,7 +248,7 @@ MonoBehaviour:
   isGround: 0
   JumpForce: 4
   minScreen: {x: 0, y: 0}
-  maxScreen: {x: 49.27889, y: 3.5}
+  maxScreen: {x: 1, y: 1}
   cam: {fileID: 519420031}
 --- !u!50 &18034584
 Rigidbody2D:

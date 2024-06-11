@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         moving();
-        //checkPos();
+        checkPos();
         CheckGround();
         Jumping();
         Attack();
@@ -124,30 +124,30 @@ public class Player : MonoBehaviour
     //    }
     //}
 
-    //private void checkPos()
-    //{
-    //    Vector2 curPos = cam.WorldToViewportPoint(transform.position);
-    //    if (curPos.x < minScreen.x)
-    //    {
-    //        curPos.x = minScreen.x;
-    //    }
-    //    else if (curPos.x > maxScreen.x)
-    //    {
-    //        curPos.x = maxScreen.x;
-    //    }
+    private void checkPos()
+    {
+        Vector2 curPos = cam.WorldToViewportPoint(transform.position);
+        if (curPos.x < minScreen.x)
+        {
+            curPos.x = minScreen.x;
+        }
+        else if (curPos.x > maxScreen.x)
+        {
+            curPos.x = maxScreen.x;
+        }
 
-    //    if (curPos.y < minScreen.y)
-    //    {
-    //        curPos.y = minScreen.y;
-    //    }
-    //    else if (curPos.y > maxScreen.y)
-    //    {
-    //        curPos.y = maxScreen.y;
-    //    }
+        if (curPos.y < minScreen.y)
+        {
+            curPos.y = minScreen.y;
+        }
+        else if (curPos.y > maxScreen.y)
+        {
+            curPos.y = maxScreen.y;
+        }
 
-    //    Vector3 fixedPos = cam.ViewportToWorldPoint(curPos);
-    //    transform.position = fixedPos;
-    //}
+        Vector3 fixedPos = cam.ViewportToWorldPoint(curPos);
+        transform.position = fixedPos;
+    }
 
     //private void checkPosi()
     //{

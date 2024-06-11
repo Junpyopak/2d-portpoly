@@ -153,4 +153,9 @@ public class Player : MonoBehaviour
     //{
 
     //}
+
+    private void checkPos2()
+    {
+        
+    }
 }

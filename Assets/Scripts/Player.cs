@@ -16,7 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField, Tooltip("화면 최소비율")] Vector2 minScreen;
     [SerializeField, Tooltip("최대비율")] Vector2 maxScreen;
     [SerializeField] Camera cam;
-    BoxCollider2D boxColl;
+
+    [SerializeField] GameObject objExplanMove;
+    [SerializeField] GameObject objExplanSetting;
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
-        boxColl = GameObject.Find("MapCam").GetComponent<BoxCollider2D>();
+        
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
     {
         moving();
         checkPos();
+        ExplanMove();
         CheckGround();
         Jumping();
         Attack();
@@ -149,13 +152,17 @@ public class Player : MonoBehaviour
         transform.position = fixedPos;
     }
 
-    //private void checkPosi()
-    //{
+    private void ExplanMove()
+    {
+        if(movePos.x != 0)
+        {
+            objExplanMove.SetActive(false);
+        }
+    }
 
-    //}
-
-    private void checkPos2()
+    private void ExplanSett()
     {
         
     }
+
 }

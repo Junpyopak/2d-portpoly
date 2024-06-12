@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("플레이어")]
     [SerializeField] float moveSpeed = 3f;
     Rigidbody2D rigid2d;
     Animator anim;
@@ -12,14 +13,16 @@ public class Player : MonoBehaviour
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
     // Start is called before the first frame update
-
+    [Header("플레이어 이동영역 제한")]
     [SerializeField, Tooltip("화면 최소비율")] Vector2 minScreen;
     [SerializeField, Tooltip("최대비율")] Vector2 maxScreen;
     [SerializeField] Camera cam;
 
+    [Header("튜토리얼 설명")]
     [SerializeField] GameObject objExplanMove;
     [SerializeField] GameObject objExplanSetting;
-
+    [SerializeField] GameObject objExplanJump;
+    int curText = 0;
     private void Awake()
     {
         
@@ -28,7 +31,8 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
-        
+        objExplanSetting.SetActive(false);
+        objExplanJump.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,6 +41,8 @@ public class Player : MonoBehaviour
         moving();
         checkPos();
         ExplanMove();
+
+        // ExplanSett();
         CheckGround();
         Jumping();
         Attack();
@@ -76,6 +82,7 @@ public class Player : MonoBehaviour
             anim.SetBool("isJump", true);
             rigid2d.velocity = Vector2.up * JumpForce;
         }
+
         else
         {
             anim.SetBool("isJump", false);
@@ -149,20 +156,20 @@ public class Player : MonoBehaviour
         }
 
         Vector3 fixedPos = cam.ViewportToWorldPoint(curPos);
+        fixedPos.z = 0;
         transform.position = fixedPos;
     }
 
     private void ExplanMove()
     {
-        if(movePos.x != 0)
+        if (movePos.x != 0 && curText == 0)//텍스트를 띄우지 않았으면서,케릭터의 movepos가 0이 아닐때
         {
             objExplanMove.SetActive(false);
+            objExplanSetting.SetActive(true);
+            curText = 1;//해당 함수가 다시 돌아가는 것을 막기위해 curText겂을 증가하여 다음 텍스트가 나오도록.
         }
     }
 
-    private void ExplanSett()
-    {
-        
-    }
+    
 
 }

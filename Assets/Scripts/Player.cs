@@ -9,9 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 3f;
     Rigidbody2D rigid2d;
     Animator anim;
-    public bool isGround = false;
+    BoxCollider2D LadderBox;
+    private bool isGround = false;
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
+    private bool isladder = false;
+
+
     // Start is called before the first frame update
     [Header("플레이어 이동영역 제한")]
     [SerializeField, Tooltip("화면 최소비율")] Vector2 minScreen;
@@ -33,6 +37,7 @@ public class Player : MonoBehaviour
         rigid2d = GetComponent<Rigidbody2D>();
         objExplanSetting.SetActive(false);
         objExplanJump.SetActive(false);
+        LadderBox = GameObject.Find("Ladders").GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -46,6 +51,7 @@ public class Player : MonoBehaviour
         CheckGround();
         Jumping();
         Attack();
+        checkLadder();
     }
 
     private void moving()
@@ -170,6 +176,38 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    private void checkLadder()
+    {
+        if (rigid2d.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+        {
+            isladder = true;
+            if (isladder == true && Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                anim.SetBool("isClime", true);
+            }
+            else
+            {
+                isladder = false;
+                anim.SetBool("isClime", false);
+            }
+        }
+        
+    }
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.gameObject.name =="Ladders")
+    //    {
+    //        isladder = true;
+    //        if (isladder == true && Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+    //        {
+    //            anim.SetBool("isClime", true);
+    //        }
+    //        else
+    //        {
+    //            isladder = false;
+    //            anim.SetBool("isClime", false);
+    //        }
+    //    }
+    //}
 }

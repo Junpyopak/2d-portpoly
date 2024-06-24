@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private bool isGround = false;
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
-    
+
     [Tooltip("플레이어 사다리 타기")]
     public bool isladder = false;
     [SerializeField] float ClimeForce = 3;
@@ -42,14 +42,18 @@ public class Player : MonoBehaviour
         objExplanSetting.SetActive(false);
         objExplanJump.SetActive(false);
         LadderBox = GameObject.Find("Ladders").GetComponent<BoxCollider2D>();
-        
-        
-    }
 
+
+    }
+    private void FixedUpdate()
+    {
+        moving();
+
+    }
     // Update is called once per frame
     void Update()
     {
-        moving();
+
         checkPos();
         ExplanMove();
 
@@ -57,12 +61,40 @@ public class Player : MonoBehaviour
         CheckGround();
         Jumping();
         Attack();
-        checkLadder();
+        //checkLadder();
+        if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            this.gameObject.layer = 8;
+            anim.SetBool("isClime", true);
+            rigid2d.gravityScale = 0;
+            rigid2d.velocity = Vector2.up * ClimeForce;
+
+            float climeSpeed = Input.GetAxisRaw("Vertical");
+            anim.SetFloat("ClimeSpeed", climeSpeed);
+
+            if (climeSpeed == -1)
+            {
+                rigid2d.velocity = Vector2.down * ClimeForce;
+            }
+        }
+        if (isladder == false)
+        {
+            rigid2d.gravityScale = 1;
+            anim.SetBool("isClime", false);
+            this.gameObject.layer = 0;
+        }
     }
 
     private void moving()
     {
-        movePos.x = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        if (isladder == true)//사다리 등반이 시작 되었을때 플레이어의 좌우이동 금지(movepos값 생각)
+        {
+            movePos.x = 0;
+        }
+        if (isladder == false)
+        {
+            movePos.x = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
+        }
         movePos.y = Input.GetAxisRaw("Vertical");
         transform.position = new Vector2(transform.position.x + movePos.x, transform.position.y);
         anim.SetBool("isRun", movePos.x != 0);
@@ -74,6 +106,7 @@ public class Player : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(1f, 1f, 1);
         }
+
     }
 
     private void CheckGround()
@@ -81,7 +114,7 @@ public class Player : MonoBehaviour
         if (rigid2d.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             isGround = true;
-            
+
         }
         else
         {
@@ -183,49 +216,49 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void checkLadder()
-    {
-        if (rigid2d.IsTouchingLayers(LayerMask.GetMask("Ladders")))
-        {
-            isladder = true;
-            if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                
-                anim.SetBool("isClime", true);
-                rigid2d.gravityScale = 0;
-                rigid2d.velocity = Vector2.up * ClimeForce;
+    //private void checkLadder()
+    //{
+    //    if (rigid2d.IsTouchingLayers(LayerMask.GetMask("Ladders")))
+    //    {
+    //        isladder = true;
+    //        if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
+    //        {
 
-            }
-            //if (Input.GetKeyUp(KeyCode.UpArrow))
-            //{
-            //    //anim.SetFloat("ClimeSpeed", 0.0f);
-            //}
-            //else
-            //{
+    //            anim.SetBool("isClime", true);
+    //            rigid2d.gravityScale = 0;
+    //            rigid2d.velocity = Vector2.up * ClimeForce;
 
-            //}
-        }
-        else
-        {
-            isladder = false;
-            rigid2d.gravityScale = 1;
-            anim.SetBool("isClime", false);
-            this.gameObject.layer = 0;
-        }
+    //        }
+    //        //if (Input.GetKeyUp(KeyCode.UpArrow))
+    //        //{
+    //        //    //anim.SetFloat("ClimeSpeed", 0.0f);
+    //        //}
+    //        //else
+    //        //{
 
-        if (isladder == true)
-        {
-            this.gameObject.layer = 8;
-            float climeSpeed = Input.GetAxisRaw("Vertical");
-            anim.SetFloat("ClimeSpeed", climeSpeed);
-    
-            if(climeSpeed == -1)
-            {
-                rigid2d.velocity = Vector2.down * ClimeForce;
-            }
-        }
+    //        //}
+    //    }
+    //    else
+    //    {
+    //        isladder = false;
+    //        rigid2d.gravityScale = 1;
+    //        anim.SetBool("isClime", false);
+    //        this.gameObject.layer = 0;
+    //    }
 
-    }
+    //    if (isladder == true)
+    //    {
+    //        this.gameObject.layer = 8;
+    //        float climeSpeed = Input.GetAxisRaw("Vertical");
+    //        anim.SetFloat("ClimeSpeed", climeSpeed);
+
+    //        if(climeSpeed == -1)
+    //        {
+    //            rigid2d.velocity = Vector2.down * ClimeForce;
+    //        }
+    //    }
+
+    //}
 
     //private void OnTriggerEnter2D(Collider2D collision)
     //{
@@ -244,30 +277,30 @@ public class Player : MonoBehaviour
     //    }
     //}
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Ladders"))
-    //    {
-    //        isladder =true;
-    //        if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
-    //        {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladders"))
+        {
+            isladder = true;
 
-    //            anim.SetBool("isClime", true);
-    //            rigid2d.gravityScale = 0;
-    //            rigid2d.velocity = Vector2.up * ClimeForce;
+            //if (isladder == true)
+            //{
+            //    this.gameObject.layer = 8;
+            //    float climeSpeed = Input.GetAxisRaw("Vertical");
+            //    anim.SetFloat("ClimeSpeed", climeSpeed);
 
-
-    //        }
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Ladders"))
-    //    {
-    //        isladder = false;
-    //        rigid2d.gravityScale = 1;
-    //        anim.SetBool("isClime", false);
-    //        this.gameObject.layer = 0;
-    //    }
-    //}
+            //    if (climeSpeed == -1)
+            //    {
+            //        rigid2d.velocity = Vector2.down * ClimeForce;
+            //    }
+            //}
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladders"))
+        {
+            isladder = false;
+        }
+    }
 }

@@ -218,6 +218,7 @@ public class Player : MonoBehaviour
             this.gameObject.layer = 8;
             float climeSpeed = Input.GetAxisRaw("Vertical");
             anim.SetFloat("ClimeSpeed", climeSpeed);
+    
             if(climeSpeed == -1)
             {
                 rigid2d.velocity = Vector2.down * ClimeForce;
@@ -240,6 +241,33 @@ public class Player : MonoBehaviour
     //            isladder = false;
     //            anim.SetBool("isClime", false);
     //        }
+    //    }
+    //}
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Ladders"))
+    //    {
+    //        isladder =true;
+    //        if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
+    //        {
+
+    //            anim.SetBool("isClime", true);
+    //            rigid2d.gravityScale = 0;
+    //            rigid2d.velocity = Vector2.up * ClimeForce;
+
+
+    //        }
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Ladders"))
+    //    {
+    //        isladder = false;
+    //        rigid2d.gravityScale = 1;
+    //        anim.SetBool("isClime", false);
+    //        this.gameObject.layer = 0;
     //    }
     //}
 }

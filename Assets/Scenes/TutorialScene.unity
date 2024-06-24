@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 203707875}
   m_Layer: 7
   m_Name: Ladders
-  m_TagString: Untagged
+  m_TagString: Ladders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

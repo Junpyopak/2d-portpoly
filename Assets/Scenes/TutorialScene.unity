@@ -225,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18034579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.65, y: -2.77, z: 0}
+  m_LocalPosition: {x: 19.62, y: -2.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -247,7 +247,7 @@ MonoBehaviour:
   moveSpeed: 3
   JumpForce: 4
   isladder: 0
-  ClimeForce: 1.5
+  ClimeForce: 1.4
   minScreen: {x: 0, y: 0}
   maxScreen: {x: 1, y: 1}
   cam: {fileID: 519420031}
@@ -313,7 +313,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3205614, y: -0.19214511}
+  m_Offset: {x: -0.3382368, y: -0.18772632}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -324,7 +324,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7590122, y: 1.4075146}
+  m_Size: {x: 0.7236614, y: 1.3633264}
   m_EdgeRadius: 0
 --- !u!1 &92113735
 GameObject:
@@ -1600,7 +1600,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &712532548 stripped
 Transform:
@@ -5088,7 +5088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Size.y
-      value: 5.817897
+      value: 5.82106
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Enabled
@@ -5100,7 +5100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Offset.y
-      value: -0.85382783
+      value: -0.8522464
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_IsTrigger
@@ -5200,7 +5200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1280474156
 GameObject:
@@ -8344,7 +8344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Size.y
-      value: 4.5413346
+      value: 4.5551496
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Enabled
@@ -8356,7 +8356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Offset.y
-      value: -0.2440288
+      value: -0.23712134
       objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_IsTrigger

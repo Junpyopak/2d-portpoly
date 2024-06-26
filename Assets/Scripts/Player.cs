@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [Tooltip("플레이어 사다리 타기")]
     public bool isladder = false;
     [SerializeField] float ClimeForce = 3;
+    float climeSpeed = 0;
+
 
 
     // Start is called before the first frame update
@@ -48,7 +50,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         moving();
-
+        
     }
     // Update is called once per frame
     void Update()
@@ -62,21 +64,60 @@ public class Player : MonoBehaviour
         Jumping();
         Attack();
         //checkLadder();
-        if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
+        //if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    this.gameObject.layer = 8;
+        //    anim.SetBool("isClime", true);
+        //    //rigid2d.gravityScale = 0;
+        //    rigid2d.velocity = Vector2.up * ClimeForce;           
+        //}
+        //rigid2d.gravityScale = 1;
+        if (isladder == true)
         {
+            
+            //float climeSpeed = Input.GetAxisRaw("Vertical");
+            //anim.SetBool("isClime", true);
+            //anim.SetFloat("ClimeSpeed", climeSpeed);
             this.gameObject.layer = 8;
-            anim.SetBool("isClime", true);
-            rigid2d.gravityScale = 0;
-            rigid2d.velocity = Vector2.up * ClimeForce;
-
-            float climeSpeed = Input.GetAxisRaw("Vertical");
-            anim.SetFloat("ClimeSpeed", climeSpeed);
-
-            if (climeSpeed == -1)
+            if (Input.GetKey(KeyCode.UpArrow))//사다리 올라갈떄
             {
+                rigid2d.gravityScale = 0;
+                climeSpeed = 1;
+                anim.SetFloat("ClimeSpeed", climeSpeed);
+                anim.SetBool("isClime", true);
+                rigid2d.velocity = Vector2.up * ClimeForce;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))//캐릭터 사다리 위에서 내려올떄
+            {
+                rigid2d.gravityScale = 0;
+                climeSpeed = -1;
+                anim.SetBool("isClime", true);
+                anim.SetFloat("ClimeSpeed", climeSpeed);
                 rigid2d.velocity = Vector2.down * ClimeForce;
             }
+            else if(anim.GetBool("isClime") == true)
+            {
+                climeSpeed = 0;
+                anim.SetFloat("ClimeSpeed", climeSpeed);
+                rigid2d.velocity = Vector2.zero;
+                //rigid2d.gravityScale = 0;
+            }
         }
+        //if(isladder==true && Input.GetKey(KeyCode.DownArrow))//캐릭터 사다리 위에서 내려올떄
+        //{
+        //    this.gameObject.layer = 8;
+        //    float downSpeed = -1;
+        //    anim.SetBool("isClime", true);
+        //    rigid2d.gravityScale = 0;
+        //    anim.SetFloat("ClimeSpeed", downSpeed);
+        //    rigid2d.velocity = Vector2.down * ClimeForce;
+        //}
+        //if (isladder ==true && Input.GetKey(KeyCode.DownArrow))
+        //{float climeSpeed = Input.GetAxisRaw("Vertical");
+        //    climeSpeed = -1;
+        //    rigid2d.velocity = Vector2.down * ClimeForce;
+
+        //}
         if (isladder == false)
         {
             rigid2d.gravityScale = 1;
@@ -260,40 +301,12 @@ public class Player : MonoBehaviour
 
     //}
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.gameObject.name =="Ladders")
-    //    {
-    //        isladder = true;
-    //        if (isladder == true && Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-    //        {
-    //            anim.SetBool("isClime", true);
-    //        }
-    //        else
-    //        {
-    //            isladder = false;
-    //            anim.SetBool("isClime", false);
-    //        }
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ladders"))
         {
             isladder = true;
-
-            //if (isladder == true)
-            //{
-            //    this.gameObject.layer = 8;
-            //    float climeSpeed = Input.GetAxisRaw("Vertical");
-            //    anim.SetFloat("ClimeSpeed", climeSpeed);
-
-            //    if (climeSpeed == -1)
-            //    {
-            //        rigid2d.velocity = Vector2.down * ClimeForce;
-            //    }
-            //}
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

@@ -2084,7 +2084,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -5082,6 +5082,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2405723101613088658, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618352724892608851, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Size.x
       value: 0.7352905
@@ -5106,9 +5114,37 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702358562874611340, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762664572201525719, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4942334835011091908, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Name
       value: 'Ladders '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036262853974089113, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679552756958580978, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833868232808895426, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536239458078449060, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8338,6 +8374,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2405723101613088658, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618352724892608851, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Size.x
       value: 0.67822075
@@ -8362,9 +8406,53 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4157284845687448473, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677941505869814474, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702358562874611340, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762664572201525719, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4942334835011091908, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
       propertyPath: m_Name
       value: Ladders
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036262853974089113, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335609508842043503, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679552756958580978, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833868232808895426, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159439178017488747, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437840767228134978, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536239458078449060, guid: 71e817f77ffc12544a76382f1038cb32, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

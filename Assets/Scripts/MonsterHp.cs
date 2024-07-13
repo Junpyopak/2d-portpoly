@@ -10,14 +10,16 @@ public class MonsterHp : MonoBehaviour
     [SerializeField] float curHp = 5;
     [SerializeField] float maxHp = 5;
     // Start is called before the first frame update
+    [SerializeField] bool GetDamage;
 
+    Monster monsterSc;
     private void Awake()
     {
         Hp = transform.Find("Hp").GetComponent<Image>();
     }
     void Start()
     {
-
+        monsterSc = monster.GetComponent<Monster>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,8 @@ public class MonsterHp : MonoBehaviour
     {
         PosHpbar();
         checkHp();
-        dearh();
+        //death();
+        TestFunction_GetDamage();
     }
 
     private void PosHpbar()
@@ -48,11 +51,35 @@ public class MonsterHp : MonoBehaviour
             }
         }
     }
-    private void dearh()
+    private void death()
     {
         if(Hp.fillAmount <= 0)
         {
             Destroy(gameObject);
+            Destroy(monster);
+        }
+    }
+    private void TestFunction_GetDamage()
+    {
+        if (GetDamage == true)
+        {
+            
+            GetDamage = false;
+            Hit(1);
+        }
+    }
+
+    public void Hit(float _damage)
+    {
+
+        monsterSc.Damage();
+        curHp -= _damage;
+        
+        if (curHp <= 0)
+        {
+            death();
+            curHp = 0;
+            
         }
     }
 }

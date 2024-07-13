@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -14,6 +13,12 @@ public class Player : MonoBehaviour
     private bool isGround = false;
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
+
+    [SerializeField] float CurHp = 20;
+    [SerializeField] float MaxHp = 20;
+
+    int curText = 0;
+    int atkCount = 0;
 
     [Tooltip("플레이어 사다리 타기")]
     public bool isladder = false;
@@ -32,7 +37,10 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject objExplanMove;
     [SerializeField] GameObject objExplanSetting;
     [SerializeField] GameObject objExplanJump;
-    int curText = 0;
+
+    [Header("PlayerHp")]
+    [SerializeField] PlayerHp playerHp;
+
     private void Awake()
     {
 
@@ -49,13 +57,13 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (playerHp.CurHp <= 0) return;//player.hp에 hp 값을 가져와 0이라면 리턴처리해서 아래 코드들의 기능이 못돌아가게끔.
+
         moving();
-        
     }
     // Update is called once per frame
     void Update()
     {
-
         checkPos();
         ExplanMove();
 
@@ -74,7 +82,7 @@ public class Player : MonoBehaviour
         //rigid2d.gravityScale = 1;
         if (isladder == true)
         {
-            
+
             //float climeSpeed = Input.GetAxisRaw("Vertical");
             //anim.SetBool("isClime", true);
             //anim.SetFloat("ClimeSpeed", climeSpeed);
@@ -95,7 +103,7 @@ public class Player : MonoBehaviour
                 anim.SetFloat("ClimeSpeed", climeSpeed);
                 rigid2d.velocity = Vector2.down * ClimeForce;
             }
-            else if(anim.GetBool("isClime") == true)
+            else if (anim.GetBool("isClime") == true)
             {
                 climeSpeed = 0;
                 anim.SetFloat("ClimeSpeed", climeSpeed);
@@ -176,52 +184,50 @@ public class Player : MonoBehaviour
         }
     }
 
+
+
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    for (atkCount = 0; atkCount <= 2; atkCount++)
+        //    {
+
+        //        if (atkCount == 1)
+        //        {
+        //            anim.SetBool("Atk", true);
+        //        }
+        //        if (atkCount == 2)
+        //        {
+        //            anim.SetBool("Atk2", true);
+        //        }
+        //        //atkCount = 0;
+
+        //    }
+        //}
+
+        for (atkCount = 0; atkCount <= 2; atkCount++)
         {
-            //movePos.x = 0;
-            anim.SetBool("Atk", true);
-            if (Input.GetKeyDown(KeyCode.V))
+            if(Input.GetKeyDown(KeyCode.V))
             {
-                anim.SetBool("Atk2", true);
+                atkCount++;
+                if(atkCount==1)
+                {
+                    anim.SetBool("Atk", true);
+                }
+                if(atkCount==2)
+                {
+                    anim.SetBool("Atk", false);
+                    anim.SetBool("Atk2", true);
+                                      
+                }
             }
-
-
-        }
-        else
-        {
-            anim.SetBool("Atk", false);
-            anim.SetBool("Atk2", false);
-
         }
     }
 
-    private void Attack2()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            anim.SetBool("Atk2", true);
-        }
-        else
-        {
-            anim.SetBool("Atk2", false);
-        }
-    }
 
-    //private void Atk2()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.V)&& Input.GetKeyDown(KeyCode.V))
-    //    {
-    //        anim.SetBool("attk2", true);
-    //    }
-    //    else
-    //    {
-    //        anim.SetBool("attk2", false);
-    //    }
-    //}
 
-    private void checkPos()
+        private void checkPos()
     {
         Vector2 curPos = cam.WorldToViewportPoint(transform.position);
         if (curPos.x < minScreen.x)
@@ -315,5 +321,9 @@ public class Player : MonoBehaviour
         {
             isladder = false;
         }
+    }
+    public void death()
+    {
+        anim.SetTrigger("DoDeath");
     }
 }

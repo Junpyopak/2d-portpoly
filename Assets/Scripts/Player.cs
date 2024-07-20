@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Player : MonoBehaviour
 {
     [Header("플레이어")]
+    [SerializeField] bool attack1 = false;
     [SerializeField] float moveSpeed = 3f;
     Rigidbody2D rigid2d;
     Animator anim;
@@ -184,50 +185,37 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void StartAttck1()
+    {
+        attack1 = true;
+    }
 
+    private void EndAttact1()
+    {
+        attack1 = false;
+    }
+
+    private void EndAttack2()
+    {
+        anim.SetBool("Atk2", false);
+    }
 
     private void Attack()
     {
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    for (atkCount = 0; atkCount <= 2; atkCount++)
-        //    {
-
-        //        if (atkCount == 1)
-        //        {
-        //            anim.SetBool("Atk", true);
-        //        }
-        //        if (atkCount == 2)
-        //        {
-        //            anim.SetBool("Atk2", true);
-        //        }
-        //        //atkCount = 0;
-
-        //    }
-        //}
-
-        for (atkCount = 0; atkCount <= 2; atkCount++)
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            if(Input.GetKeyDown(KeyCode.V))
+            if (attack1 == false)
             {
-                atkCount++;
-                if(atkCount==1)
-                {
-                    anim.SetBool("Atk", true);
-                }
-                if(atkCount==2)
-                {
-                    anim.SetBool("Atk", false);
-                    anim.SetBool("Atk2", true);
-                                      
-                }
+                anim.SetTrigger("Atk1");
+            }
+            else if(anim.GetBool("Atk2") == false)
+            {
+                anim.SetBool("Atk2",true);
             }
         }
     }
 
-
-
-        private void checkPos()
+    private void checkPos()
     {
         Vector2 curPos = cam.WorldToViewportPoint(transform.position);
         if (curPos.x < minScreen.x)

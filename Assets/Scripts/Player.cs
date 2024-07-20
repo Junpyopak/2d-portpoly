@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isJump", false);
         }
-    }
+    } 
 
     private void StartAttck1()
     {

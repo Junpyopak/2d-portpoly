@@ -22,6 +22,6 @@ public class Monster : MonoBehaviour
 
     public void Damage()
     {
-        anim.SetBool("Damage", true);
+        anim.SetTrigger("Damage");
     }
 }

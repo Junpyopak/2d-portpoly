@@ -11,6 +11,7 @@ public class MonsterHp : MonoBehaviour
     [SerializeField] float maxHp = 5;
     // Start is called before the first frame update
     [SerializeField] bool GetDamage;
+    [SerializeField] GameObject item;
 
     Monster monsterSc;
     private void Awake()
@@ -57,6 +58,7 @@ public class MonsterHp : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(monster);
+            Instantiate(item,transform.position,Quaternion.identity);
         }
     }
     private void TestFunction_GetDamage()
@@ -79,7 +81,7 @@ public class MonsterHp : MonoBehaviour
         {
             curHp = 0;
             death();          
-            //GameManager.Instantiate(gameObject);
+            
         }
     }
 }

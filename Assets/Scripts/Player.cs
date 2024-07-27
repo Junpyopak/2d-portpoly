@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     float climeSpeed = 0;
 
     [Tooltip("플레이어 스테이지 통과")]
-    [SerializeField] bool getitem = false;
+    [SerializeField] public bool getitem = false;
 
     // Start is called before the first frame update
     [Header("플레이어 이동영역 제한")]

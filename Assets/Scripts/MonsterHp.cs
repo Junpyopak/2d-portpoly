@@ -61,7 +61,7 @@ public class MonsterHp : MonoBehaviour
     }
     private void TestFunction_GetDamage()
     {
-        if (GetDamage == true)
+        if (GetDamage == true )
         {
             
             GetDamage = false;
@@ -77,9 +77,9 @@ public class MonsterHp : MonoBehaviour
         
         if (curHp <= 0)
         {
-            death();
             curHp = 0;
-            
+            death();          
+            //GameManager.Instantiate(gameObject);
         }
     }
 }

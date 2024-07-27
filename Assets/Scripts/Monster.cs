@@ -16,18 +16,12 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+
 
     public void Damage()
     {
         anim.SetBool("Damage", true);
     }
-
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-        
-    //}
-
 }

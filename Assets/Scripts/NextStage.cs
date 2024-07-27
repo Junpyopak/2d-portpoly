@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextStage : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class NextStage : MonoBehaviour
     void Update()
     {
         openGate();
+        nextStage();
     }
 
    private void openGate()
@@ -24,6 +26,16 @@ public class NextStage : MonoBehaviour
         if (playerSc.getitem==true)
         {
             anim.SetBool("HasItem", true);
+        }
+    }
+    private void nextStage()
+    {
+        if(playerSc.getitem == true&&anim.GetBool("HasItem")==true)
+        {
+            if(Input.GetKey(KeyCode.UpArrow))
+            {
+                SceneManager.LoadScene(2);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
@@ -51,8 +53,11 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
-        objExplanSetting.SetActive(false);
-        objExplanJump.SetActive(false);
+        if(SceneManager.GetActiveScene().name == "TutorialScene")
+        {
+            objExplanSetting.SetActive(false);
+            objExplanJump.SetActive(false);
+        }    
         LadderBox = GameObject.Find("Ladders").GetComponent<BoxCollider2D>();
 
 
@@ -67,8 +72,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         checkPos();
-        ExplanMove();
-
+        if(SceneManager.GetActiveScene().name == "TutorialScene")
+        {
+            ExplanMove();
+        }
         // ExplanSett();
         CheckGround();
         Jumping();
@@ -184,7 +191,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isJump", false);
         }
-    } 
+    }
 
     private void StartAttck1()
     {
@@ -209,9 +216,9 @@ public class Player : MonoBehaviour
             {
                 anim.SetTrigger("Atk1");
             }
-            else if(anim.GetBool("Atk2") == false)
+            else if (anim.GetBool("Atk2") == false)
             {
-                anim.SetBool("Atk2",true);
+                anim.SetBool("Atk2", true);
             }
         }
     }
@@ -244,6 +251,7 @@ public class Player : MonoBehaviour
 
     private void ExplanMove()
     {
+        
         if (movePos.x != 0 && curText == 0)//텍스트를 띄우지 않았으면서,케릭터의 movepos가 0이 아닐때
         {
             objExplanMove.SetActive(false);
@@ -303,7 +311,7 @@ public class Player : MonoBehaviour
         {
             isladder = true;
         }
-        if(collision.CompareTag("keyitem"))
+        if (collision.CompareTag("keyitem"))
         {
             getitem = true;
         }

@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] float ClimeForce = 3;
     float climeSpeed = 0;
 
-
+    [Tooltip("플레이어 스테이지 통과")]
+    [SerializeField] bool getitem = false;
 
     // Start is called before the first frame update
     [Header("플레이어 이동영역 제한")]
@@ -301,6 +302,10 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Ladders"))
         {
             isladder = true;
+        }
+        if(collision.CompareTag("keyitem"))
+        {
+            getitem = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -25,8 +24,12 @@ public class Player : MonoBehaviour
 
     [Tooltip("플레이어 사다리 타기")]
     public bool isladder = false;
+    private bool doLadder = false;//현재 사다리를 이용하고 있는지
+    [SerializeField] private bool ableDownAction = false;//idle상태에서 내려가는 기능으로 전환할수 있는지
+    [SerializeField] private bool ableUpAction = false;//idle상태에서 올라가는 기능으로 전환할수 있는지
     [SerializeField] float ClimeForce = 3;
     float climeSpeed = 0;
+    BoxCollider2D ckLadder;
 
     [Tooltip("플레이어 스테이지 통과")]
     [SerializeField] public bool getitem = false;
@@ -53,12 +56,12 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigid2d = GetComponent<Rigidbody2D>();
-        if(SceneManager.GetActiveScene().name == "TutorialScene")
+        if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
             objExplanSetting.SetActive(false);
             objExplanJump.SetActive(false);
-        }    
-        LadderBox = GameObject.Find("Ladders").GetComponent<BoxCollider2D>();
+        }
+
 
 
     }
@@ -72,12 +75,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         checkPos();
-        if(SceneManager.GetActiveScene().name == "TutorialScene")
+        if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
             ExplanMove();
         }
         // ExplanSett();
         CheckGround();
+
         Jumping();
         Attack();
         //checkLadder();
@@ -89,35 +93,46 @@ public class Player : MonoBehaviour
         //    rigid2d.velocity = Vector2.up * ClimeForce;           
         //}
         //rigid2d.gravityScale = 1;
-        if (isladder == true)
+        doLadder = anim.GetBool("isClime");
+        if (isladder == true)//사다리에 접촉 했다면
         {
-
             //float climeSpeed = Input.GetAxisRaw("Vertical");
             //anim.SetBool("isClime", true);
             //anim.SetFloat("ClimeSpeed", climeSpeed);
-            this.gameObject.layer = 8;
-            if (Input.GetKey(KeyCode.UpArrow))//사다리 올라갈떄
+            if (doLadder == true)//이미 사다리를 타고 있는 상태일때
             {
-                rigid2d.gravityScale = 0;
-                climeSpeed = 1;
-                anim.SetFloat("ClimeSpeed", climeSpeed);
-                anim.SetBool("isClime", true);
-                rigid2d.velocity = Vector2.up * ClimeForce;
+                if (Input.GetKey(KeyCode.UpArrow))//사다리 올라갈떄
+                {
+                    this.gameObject.layer = 8;
+                    rigid2d.gravityScale = 0;
+                    climeSpeed = 1;
+                    anim.SetFloat("ClimeSpeed", climeSpeed);
+                    anim.SetBool("isClime", true);
+                    rigid2d.velocity = Vector2.up * ClimeForce;
+                }
+                else if (Input.GetKey(KeyCode.DownArrow))//캐릭터 사다리 위에서 내려올떄
+                {
+                    this.gameObject.layer = 8;
+                    rigid2d.gravityScale = 0;
+                    climeSpeed = -1;
+                    anim.SetBool("isClime", true);
+                    anim.SetFloat("ClimeSpeed", climeSpeed);
+                    rigid2d.velocity = Vector2.down * ClimeForce;
+                }
+                else
+                {
+                    climeSpeed = 0;
+                    anim.SetFloat("ClimeSpeed", climeSpeed);
+                    rigid2d.velocity = Vector2.zero;
+                    //rigid2d.gravityScale = 0;
+                }
             }
-            else if (Input.GetKey(KeyCode.DownArrow))//캐릭터 사다리 위에서 내려올떄
+            else//사다리에 닿았는데 현재 idle 상태일때
             {
-                rigid2d.gravityScale = 0;
-                climeSpeed = -1;
-                anim.SetBool("isClime", true);
-                anim.SetFloat("ClimeSpeed", climeSpeed);
-                rigid2d.velocity = Vector2.down * ClimeForce;
-            }
-            else if (anim.GetBool("isClime") == true)
-            {
-                climeSpeed = 0;
-                anim.SetFloat("ClimeSpeed", climeSpeed);
-                rigid2d.velocity = Vector2.zero;
-                //rigid2d.gravityScale = 0;
+                if (ableUpAction == true && Input.GetKeyDown(KeyCode.UpArrow) || ableDownAction == true && Input.GetKeyDown(KeyCode.DownArrow))//액션이 가능할때 지정 키를 입력한다면
+                {
+                    anim.SetBool("isClime", true);
+                }
             }
         }
         //if(isladder==true && Input.GetKey(KeyCode.DownArrow))//캐릭터 사다리 위에서 내려올떄
@@ -145,14 +160,15 @@ public class Player : MonoBehaviour
 
     private void moving()
     {
-        if (isladder == true)//사다리 등반이 시작 되었을때 플레이어의 좌우이동 금지(movepos값 생각)
+        if (doLadder == true)//사다리 등반이 시작 되었을때 플레이어의 좌우이동 금지(movepos값 생각)
         {
             movePos.x = 0;
         }
-        if (isladder == false)
+        else
         {
             movePos.x = Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
         }
+
         movePos.y = Input.GetAxisRaw("Vertical");
         transform.position = new Vector2(transform.position.x + movePos.x, transform.position.y);
         anim.SetBool("isRun", movePos.x != 0);
@@ -251,7 +267,7 @@ public class Player : MonoBehaviour
 
     private void ExplanMove()
     {
-        
+
         if (movePos.x != 0 && curText == 0)//텍스트를 띄우지 않았으면서,케릭터의 movepos가 0이 아닐때
         {
             objExplanMove.SetActive(false);
@@ -315,12 +331,31 @@ public class Player : MonoBehaviour
         {
             getitem = true;
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("AbleUp"))
+        {
+            ableUpAction = true;
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("AbleDown"))
+        {
+            ableDownAction = true;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Ladders"))
         {
             isladder = false;
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("AbleUp"))
+        {
+            ableUpAction = false;
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("AbleDown"))
+        {
+            ableDownAction = false;
         }
     }
     public void death()

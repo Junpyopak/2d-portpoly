@@ -79,7 +79,6 @@ public class MonsterHp : MonoBehaviour
         
         if (curHp <= 0)
         {
-            curHp = 0;
             death();          
             
         }

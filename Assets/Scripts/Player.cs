@@ -104,10 +104,10 @@ public class Player : MonoBehaviour
                 if (Input.GetKey(KeyCode.UpArrow))//사다리 올라갈떄
                 {
                     this.gameObject.layer = 8;
-                    rigid2d.gravityScale = 0;
+                    rigid2d.gravityScale = 0;//플레이어의  gravityScale을 변경해 사다리를 탈수 있도록 0으로 변경
                     climeSpeed = 1;
-                    anim.SetFloat("ClimeSpeed", climeSpeed);
-                    anim.SetBool("isClime", true);
+                    anim.SetFloat("ClimeSpeed", climeSpeed);//에니메이션의 클라임 속도에 대한 값을 받아와 만약 에님 스피드가 1이라면 올라가고 -1이라면 내려가는 에님과 0이라면 사다리에서 멈추는 에님
+                    anim.SetBool("isClime", true);//사다리 타기 에님
                     rigid2d.velocity = Vector2.up * ClimeForce;
                 }
                 else if (Input.GetKey(KeyCode.DownArrow))//캐릭터 사다리 위에서 내려올떄
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
         //    rigid2d.velocity = Vector2.down * ClimeForce;
 
         //}
-        if (isladder == false)
+        if (isladder == false)//사다리를 타고 있지 않다면,gravityScale은 1로 변경하여 중력의 영향을 받도록 설정
         {
             rigid2d.gravityScale = 1;
             anim.SetBool("isClime", false);
@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private void CheckGround()
+    private void CheckGround()//플레이어의 콜라이더가 땅에 닿아있지 않으면 플레이어에게 중력의 영향을 받을수 있도록
     {
         if (rigid2d.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
@@ -209,12 +209,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void StartAttck1()
+    private void StartAttck1()//플레이어 2단 공격을 위해 플레이어가 공격 키를 눌렀을때 attack1이 트루가 되고
     {
         attack1 = true;
     }
 
-    private void EndAttact1()
+    private void EndAttact1()//만약 플레이어가 공격이 끝났다면 어택 에님을 끊기위해
     {
         attack1 = false;
     }
@@ -358,7 +358,7 @@ public class Player : MonoBehaviour
             ableDownAction = false;
         }
     }
-    public void death()
+    public void death()//플레이어 체력바에서 체력바의 값이 0이 된다면 플레이어의 체력이 다해 죽음 에님을실행.
     {
         anim.SetTrigger("DoDeath");
     }

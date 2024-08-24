@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     int curText = 0;
     int atkCount = 0;
 
+
+
     [Tooltip("플레이어 사다리 타기")]
     public bool isladder = false;
     private bool doLadder = false;//현재 사다리를 이용하고 있는지
@@ -211,7 +213,7 @@ public class Player : MonoBehaviour
 
     private void StartAttck1()//플레이어 2단 공격을 위해 플레이어가 공격 키를 눌렀을때 attack1이 트루가 되고
     {
-        attack1 = true;
+        attack1 = true;      
     }
 
     private void EndAttact1()//만약 플레이어가 공격이 끝났다면 어택 에님을 끊기위해

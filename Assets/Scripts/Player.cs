@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -21,6 +22,10 @@ public class Player : MonoBehaviour
 
     int curText = 0;
     int atkCount = 0;
+
+    BoxCollider2D AtkBox;
+    BoxCollider2D Atk2Box;
+    BoxCollider2D Atk2Box2;
 
 
 
@@ -64,7 +69,13 @@ public class Player : MonoBehaviour
             objExplanJump.SetActive(false);
         }
 
+        AtkBox = GameObject.Find("AtkBox").GetComponent<BoxCollider2D>();//플레이어의 공격범위설정
+        Atk2Box = GameObject.Find("Atk2Box").GetComponent<BoxCollider2D>();
+        Atk2Box2 = GameObject.Find("Atk2Box2").GetComponent<BoxCollider2D>();
 
+        AtkBox.enabled = false;//플레이어가 공격하기도 전에 닿았을떄 적이데미지 받는걸 방지하기위해 콜라이더를 시작하자마자 비활성화
+        Atk2Box.enabled = false;
+        Atk2Box2.enabled = false;
 
     }
     private void FixedUpdate()
@@ -213,17 +224,21 @@ public class Player : MonoBehaviour
 
     private void StartAttck1()//플레이어 2단 공격을 위해 플레이어가 공격 키를 눌렀을때 attack1이 트루가 되고
     {
-        attack1 = true;      
+        attack1 = true; 
+        AtkBox.enabled = true;//플레이어가 공격을 시작했을때 atk1의 박스 콜을 활성화 하여 적이 닿으면 데미지를받게
     }
 
     private void EndAttact1()//만약 플레이어가 공격이 끝났다면 어택 에님을 끊기위해
     {
         attack1 = false;
+        AtkBox.enabled = false;
     }
 
     private void EndAttack2()
     {
         anim.SetBool("Atk2", false);
+        Atk2Box.enabled = false;
+        Atk2Box2.enabled = false;
     }
 
     private void Attack()
@@ -237,6 +252,8 @@ public class Player : MonoBehaviour
             else if (anim.GetBool("Atk2") == false)
             {
                 anim.SetBool("Atk2", true);
+                Atk2Box.enabled = true;//콤보공격 atk2범위를 따로 설정하여 콤보 2공격이 실행됐을때만 활성화.
+                Atk2Box2.enabled = true;
             }
         }
     }

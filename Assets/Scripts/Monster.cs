@@ -7,6 +7,8 @@ public class Monster : MonoBehaviour
 {
     Animator anim;
     BoxCollider2D boxCol;
+
+    MonsterHp monsterHpSc;
     void Start()
     {
         anim = GetComponent<Animator>();

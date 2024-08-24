@@ -24,4 +24,12 @@ public class Monster : MonoBehaviour
     {
         anim.SetTrigger("Damage");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("weapon"))
+        {
+            Damage();
+        }
+    }
 }

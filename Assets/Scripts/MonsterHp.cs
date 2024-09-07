@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,6 +64,9 @@ public class MonsterHp : MonoBehaviour
             Instantiate(item,transform.position,Quaternion.identity);
         }
     }
+
+        
+
     private void TestFunction_GetDamage()
     {
         if (GetDamage == true )

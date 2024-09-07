@@ -12,15 +12,17 @@ public class MonsterHp : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] bool GetDamage;
     [SerializeField] GameObject item;
-
+    Animator anim;
     Monster monsterSc;
     private void Awake()
     {
         Hp = transform.Find("Hp").GetComponent<Image>();
+        
     }
     void Start()
     {
         monsterSc = monster.GetComponent<Monster>();
+        anim = monster.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,7 +30,6 @@ public class MonsterHp : MonoBehaviour
     {
         PosHpbar();
         checkHp();
-        //death();
         TestFunction_GetDamage();
     }
 
@@ -57,6 +58,7 @@ public class MonsterHp : MonoBehaviour
         if(Hp.fillAmount <= 0)
         {
             Destroy(gameObject);
+            anim.SetBool("isDeath", true);
             Destroy(monster);
             Instantiate(item,transform.position,Quaternion.identity);
         }
@@ -79,8 +81,7 @@ public class MonsterHp : MonoBehaviour
         
         if (curHp <= 0)
         {
-            death();          
-            
+            death();           
         }
     }
 }

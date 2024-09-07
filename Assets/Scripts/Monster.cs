@@ -7,12 +7,15 @@ public class Monster : MonoBehaviour
 {
     Animator anim;
     BoxCollider2D boxCol;
+    Rigidbody2D rigid;
+
 
     MonsterHp monsterHpSc;
     void Start()
     {
         anim = GetComponent<Animator>();
         boxCol = GetComponent<BoxCollider2D>();
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -29,9 +32,14 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("weapon"))
+        if(collision.CompareTag("Weapon"))
         {
+           
             Damage();
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
     }
 }

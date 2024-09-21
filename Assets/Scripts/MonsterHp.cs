@@ -8,9 +8,10 @@ public class MonsterHp : MonoBehaviour
 {
     private Image Hp;
     [SerializeField] GameObject monster;
-    [SerializeField] float curHp = 5;
-    [SerializeField] float maxHp = 5;
+    [SerializeField] float curHp = 10;
+    [SerializeField] float maxHp = 10;
     // Start is called before the first frame update
+    
     [SerializeField] bool GetDamage;
     [SerializeField] GameObject item;
     Animator anim;
@@ -31,7 +32,7 @@ public class MonsterHp : MonoBehaviour
     {
         PosHpbar();
         checkHp();
-        TestFunction_GetDamage();
+        //Get_Damage();
     }
 
     private void PosHpbar()
@@ -65,17 +66,17 @@ public class MonsterHp : MonoBehaviour
         }
     }
 
-        
 
-    private void TestFunction_GetDamage()
-    {
-        if (GetDamage == true )
-        {
-            
-            GetDamage = false;
-            Hit(1);
-        }
-    }
+
+    //public void Get_Damage()
+    //{
+    //    if (GetDamage == true)
+    //    {
+
+    //        GetDamage = false;
+    //        Hit(1);
+    //    }
+    //}
 
     public void Hit(float _damage)
     {

@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     Animator anim;
     BoxCollider2D boxCol;
     Rigidbody2D rigid;
-
+    [SerializeField] bool GetDamage;
 
     MonsterHp monsterHpSc;
     void Start()
@@ -16,14 +16,15 @@ public class Monster : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCol = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
+        monsterHpSc = GameObject.Find("CanvasHp").GetComponent<MonsterHp>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
-
+   
 
     public void Damage()
     {
@@ -34,8 +35,8 @@ public class Monster : MonoBehaviour
     {
         if(collision.CompareTag("Weapon"))
         {
-           
-            Damage();
+            monsterHpSc.Hit(1);
+            Damage();      
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

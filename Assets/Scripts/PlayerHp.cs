@@ -26,30 +26,31 @@ public class PlayerHp : MonoBehaviour
     {
         //player = gameObject.GetComponent<Player>();//null
         player = GameObject.Find("Player").GetComponent<Player>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        TestFunction_GetDamage();
+        //TestFunction_GetDamage();
 
         checkHp();
-        //playerdeath();
     }
 
-    private void TestFunction_GetDamage()
-    {
-        if (GetDamage == true)
-        {
-            GetDamage = false;
+    //private void TestFunction_GetDamage()
+    //{
+    //    if (GetDamage == true)
+    //    {
+    //        GetDamage = false;
 
-            Hit(1);
-        }
-    }
+    //        Hit(1);
+    //    }
+    //}
 
 
     public void Hit(float _damage)
     {
+        player.Damage();
         curHp -= _damage;
 
         if(curHp <= 0) 
@@ -69,13 +70,6 @@ public class PlayerHp : MonoBehaviour
             {
                 Hp.fillAmount = valueHp;
             }
-        }
-    }
-    private void playerdeath()
-    {
-        if (Hp.fillAmount <= 0)
-        {
-            player.death();
         }
     }
 }

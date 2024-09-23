@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 695525029}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6875,8 +6875,8 @@ MonoBehaviour:
   attack1: 0
   moveSpeed: 3
   JumpForce: 4
-  CurHp: 0
-  MaxHp: 0
+  CurHp: 10
+  MaxHp: 10
   isladder: 0
   ableDownAction: 0
   ableUpAction: 0

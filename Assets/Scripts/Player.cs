@@ -55,6 +55,9 @@ public class Player : MonoBehaviour
     [Header("PlayerHp")]
     [SerializeField] PlayerHp playerHp;
 
+    [Tooltip("플레이어 데미지")]
+    private bool doDamage = false;
+
     private void Awake()
     {
 
@@ -97,6 +100,7 @@ public class Player : MonoBehaviour
 
         Jumping();
         Attack();
+        
         //checkLadder();
         //if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
         //{
@@ -339,6 +343,10 @@ public class Player : MonoBehaviour
 
     //}
 
+    public void Damage()
+    {
+       anim.SetTrigger("damage");         
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -358,6 +366,12 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("AbleDown"))
         {
             ableDownAction = true;
+        }
+
+        if(collision.CompareTag("Enemy"))
+        {           
+            playerHp.Hit(1);
+            Damage();
         }
 
     }

@@ -10,6 +10,7 @@ public class MonsterHp : MonoBehaviour
     [SerializeField] GameObject monster;
     [SerializeField] float curHp = 10;
     [SerializeField] float maxHp = 10;
+    
     // Start is called before the first frame update
     
     [SerializeField] bool GetDamage;

@@ -56,6 +56,7 @@ public class PlayerHp : MonoBehaviour
         if(curHp <= 0) 
         {
             curHp = 0;
+            Destroy(gameObject);
             player.death();
         }
     }

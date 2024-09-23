@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] float CurHp = 20;
     [SerializeField] float MaxHp = 20;
+    public  float atkDam = 3;//플레이어의 공격력
 
     int curText = 0;
     int atkCount = 0;

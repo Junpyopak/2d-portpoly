@@ -6875,8 +6875,8 @@ MonoBehaviour:
   attack1: 0
   moveSpeed: 3
   JumpForce: 4
-  CurHp: 10
-  MaxHp: 10
+  CurHp: 20
+  MaxHp: 50
   isladder: 0
   ableDownAction: 0
   ableUpAction: 0

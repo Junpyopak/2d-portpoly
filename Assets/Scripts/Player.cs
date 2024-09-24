@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 3f;
     Rigidbody2D rigid2d;
     Animator anim;
-    BoxCollider2D LadderBox;
     private bool isGround = false;
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
@@ -27,8 +26,6 @@ public class Player : MonoBehaviour
     BoxCollider2D AtkBox;
     BoxCollider2D Atk2Box;
     BoxCollider2D Atk2Box2;
-
-
 
     [Tooltip("플레이어 사다리 타기")]
     public bool isladder = false;
@@ -80,7 +77,6 @@ public class Player : MonoBehaviour
         AtkBox.enabled = false;//플레이어가 공격하기도 전에 닿았을떄 적이데미지 받는걸 방지하기위해 콜라이더를 시작하자마자 비활성화
         Atk2Box.enabled = false;
         Atk2Box2.enabled = false;
-
     }
     private void FixedUpdate()
     {
@@ -376,6 +372,8 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Ladders"))

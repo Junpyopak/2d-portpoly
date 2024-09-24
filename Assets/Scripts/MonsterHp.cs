@@ -33,7 +33,6 @@ public class MonsterHp : MonoBehaviour
     {
         PosHpbar();
         checkHp();
-        //Get_Damage();
     }
 
     private void PosHpbar()
@@ -68,16 +67,6 @@ public class MonsterHp : MonoBehaviour
     }
 
 
-
-    //public void Get_Damage()
-    //{
-    //    if (GetDamage == true)
-    //    {
-
-    //        GetDamage = false;
-    //        Hit(1);
-    //    }
-    //}
 
     public void Hit(float _damage)
     {

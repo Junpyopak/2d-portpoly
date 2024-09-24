@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
 
-    [SerializeField] float CurHp = 20;
-    [SerializeField] float MaxHp = 20;
+     float CurHp = 20;
+     float MaxHp = 20;
     public  float atkDam = 3;//플레이어의 공격력
 
     int curText = 0;

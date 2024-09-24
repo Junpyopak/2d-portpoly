@@ -67,7 +67,6 @@ public class MonsterHp : MonoBehaviour
     }
 
 
-
     public void Hit(float _damage)
     {
 

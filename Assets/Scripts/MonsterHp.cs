@@ -10,6 +10,7 @@ public class MonsterHp : MonoBehaviour
     [SerializeField] GameObject monster;
     [SerializeField] float curHp = 10;
     [SerializeField] float maxHp = 10;
+    private float deathTime = 1.45f;
     
     // Start is called before the first frame update
     
@@ -61,7 +62,7 @@ public class MonsterHp : MonoBehaviour
         {
             Destroy(gameObject);
             anim.SetBool("isDeath", true);
-            Destroy(monster);
+            Destroy(monster,deathTime);
             Instantiate(item,transform.position,Quaternion.identity);
         }
     }

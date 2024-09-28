@@ -68,7 +68,6 @@ public class items : MonoBehaviour
         if (boxCol2.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             isGround = true;
-
         }
         else
         {

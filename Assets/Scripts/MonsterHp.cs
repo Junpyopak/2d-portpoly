@@ -40,7 +40,7 @@ public class MonsterHp : MonoBehaviour
     {
         Vector3 hpPos = monster.transform.position;//몬스터의 위치, 월드 포지션
         //Camera.main.WorldToScreenPoint(hpPos);
-        hpPos.x -= 0.31f;
+        hpPos.x += 0.21f;
         hpPos.y += 0.93f;
         transform.position = hpPos;
     }

@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour
 {
     Animator anim;
     BoxCollider2D boxCol;
-    BoxCollider2D movChBox;
+    Collider2D movChBox;
     Rigidbody2D rigid;
     [SerializeField] bool GetDamage;
     [SerializeField] float speed;
@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour
         boxCol = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
         monsterHpSc = GameObject.Find("CanvasHp").GetComponent<MonsterHp>();
-        movChBox = GameObject.Find("checkBox").GetComponent<BoxCollider2D>();
+        movChBox = GameObject.Find("checkBox").GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class Monster : MonoBehaviour
         if(isGround==true)
         {
             anim.SetBool("isGround", true);
-            rigid.velocity = new  Vector2(this.transform.position.x + speed, this.transform.position.y)*Time.deltaTime;
+            rigid.velocity = new  Vector2(transform.position.x,0)*speed*Time.deltaTime;
             
         }
         else

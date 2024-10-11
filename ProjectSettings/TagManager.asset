@@ -8,6 +8,7 @@ TagManager:
   - keyitem
   - Weapon
   - Enemy
+  - Gate
   layers:
   - Default
   - TransparentFX

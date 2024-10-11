@@ -1092,7 +1092,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695525023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.46, y: -3.11, z: 0}
+  m_LocalPosition: {x: 50.7, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GetDamage: 0
-  speed: 4
+  speed: 1
   isGround: 0
   checkWAll: 0
 --- !u!61 &695525028
@@ -8125,6 +8125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 5983997614675910269, guid: 81c033a17b763ae48bb02a40671ed094, type: 3}
+      propertyPath: m_TagString
+      value: Gate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9222,7 +9226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6195998399219240963, guid: 2064cbe9ea344b04cb31334299243176, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.7
+      value: 48.33
       objectReference: {fileID: 0}
     - target: {fileID: 6195998399219240963, guid: 2064cbe9ea344b04cb31334299243176, type: 3}
       propertyPath: m_LocalPosition.y

@@ -15,14 +15,14 @@ public class Monster : MonoBehaviour
     [SerializeField] float speed;
     MonsterHp monsterHpSc;
     [SerializeField] bool isGround;
-    [SerializeField] bool checkWAll;
+    [SerializeField] bool checkWAll = false;
     void Start()
     {
         anim = GetComponent<Animator>();
        // boxCol = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
         monsterHpSc = GameObject.Find("CanvasHp").GetComponent<MonsterHp>();
-        movChBox = transform.GetChild(1).GetComponent<Collider2D>();
+        movChBox = transform.GetChild(0).GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -81,6 +81,7 @@ public class Monster : MonoBehaviour
         if (rigid.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             isGround = true;
+            
 
         }
         else

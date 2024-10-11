@@ -33,20 +33,20 @@ public class MonsterHp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //PosHpbar();
+        PosHpbar();
         checkHp();
         //transform.position = Camera.main.WorldToScreenPoint(monsterSc.transform.position + Vector3.up);//몬스터 위치에 따라 hp 바 이미지 ui가 같이 이동
 
     }
 
-    //private void PosHpbar()
-    //{
-    //    Vector3 hpPos = monster.transform.position;//몬스터의 위치, 월드 포지션
-    //    //Camera.main.WorldToScreenPoint(hpPos);
-    //    hpPos.x += 0.21f;
-    //    hpPos.y += 0.93f;
-    //    transform.position = hpPos;
-    //}
+    private void PosHpbar()
+    {
+        Vector3 hpPos = monster.transform.position;//몬스터의 위치, 월드 포지션
+        //Camera.main.WorldToScreenPoint(hpPos);
+        hpPos.x += 0.21f;
+        hpPos.y += 0.93f;
+        transform.position = hpPos;
+    }
     private void checkHp()
     {
         float valueHp = curHp/maxHp;

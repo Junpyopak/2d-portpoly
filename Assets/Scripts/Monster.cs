@@ -76,7 +76,7 @@ public class Monster : MonoBehaviour
         transform.localScale = localScale;
 
     }
-    private void CheckGround()//플레이어의 콜라이더가 땅에 닿아있지 않으면 플레이어에게 중력의 영향을 받을수 있도록
+    private void CheckGround()
     {
         if (rigid.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {

@@ -63,9 +63,9 @@ public class MonsterHp : MonoBehaviour
     {
         if(Hp.fillAmount <= 0)
         {
+            
             Destroy(gameObject);
-            anim.SetBool("isDeath", true);
-            Destroy(monster,deathTime);
+            Destroy(monster);
             Instantiate(item,transform.position,Quaternion.identity);
         }
     }

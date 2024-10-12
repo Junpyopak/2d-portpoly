@@ -18,8 +18,9 @@ public class Monster : MonoBehaviour
     [SerializeField] bool checkWAll = false;
     void Start()
     {
+        
         anim = GetComponent<Animator>();
-       // boxCol = GetComponent<BoxCollider2D>();
+        // boxCol = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
         monsterHpSc = GameObject.Find("CanvasHp").GetComponent<MonsterHp>();
         movChBox = transform.GetChild(0).GetComponent<Collider2D>();
@@ -29,7 +30,7 @@ public class Monster : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (movChBox.IsTouchingLayers(LayerMask.GetMask("wall")) == true || movChBox.IsTouchingLayers(LayerMask.GetMask("Gate")) == true)
+        if (movChBox.IsTouchingLayers(LayerMask.GetMask("wall")) == true || movChBox.IsTouchingLayers(LayerMask.GetMask("Ground")) == false)
         {
             checkWAll = true;
             flip();
@@ -40,9 +41,12 @@ public class Monster : MonoBehaviour
     {
         CheckGround();
         Move();
-        //Debug.DrawRay(transform.position, -transform.forward * 10, Color.red);//레이캐스트 충돌
+        //RaycastHit hit;
+        //Debug.DrawRay(transform.position, transform.forward * 10, Color.red);//레이캐스트 충돌
+        //Ray ray = new Ray(transform.position,transform.forward);
+        //if (Physics.Raycast(ray, out hit, 10f))
         //{
-
+        //    Debug.Log(hit.collider.gameObject.name);
         //}
     }
 
@@ -56,13 +60,12 @@ public class Monster : MonoBehaviour
     {
         if (isGround == true)
         {
-            anim.SetBool("isGround", true);
+            anim.SetBool("isWalk", true);
             rigid.velocity = new Vector2(speed, 0);
-
         }
         else
         {
-            anim.SetBool("isGround", false);
+            anim.SetBool("isWalk", false);
         }
 
     }
@@ -81,7 +84,7 @@ public class Monster : MonoBehaviour
         if (rigid.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             isGround = true;
-            
+
 
         }
         else

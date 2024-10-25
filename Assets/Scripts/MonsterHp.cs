@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -17,8 +18,13 @@ public class MonsterHp : MonoBehaviour
     
     [SerializeField] bool GetDamage;
     [SerializeField] GameObject item;
+
+    [Header("아이템")]
+    [SerializeField] bool hasItem = false;//아이템을 가지고 있는지
+    public bool dropItem = false;//아이템을 드롭했는지
     Animator anim;
     Monster monsterSc;
+    Spawn spawnSc;
     private void Awake()
     {
         Hp = transform.Find("Hp").GetComponent<Image>();
@@ -27,6 +33,7 @@ public class MonsterHp : MonoBehaviour
     void Start()
     {
         monsterSc = monster.GetComponent<Monster>();
+        spawnSc = GameObject.Find("SpawnPoint").GetComponent<Spawn>();
         anim = monster.GetComponent<Animator>();
     }
 
@@ -63,10 +70,13 @@ public class MonsterHp : MonoBehaviour
     {
         if(Hp.fillAmount <= 0)
         {
-            
             Destroy(gameObject);
             Destroy(monster);
-            Instantiate(item,transform.position,Quaternion.identity);
+            if ((hasItem == true) && dropItem == false)//내가 아이템을 보유하고 있고 드랍하지 않았다면
+            {
+                dropItem = true;
+                GameManager.Instance.DropItem(transform.position);
+            }
         }
     }
 
@@ -81,5 +91,9 @@ public class MonsterHp : MonoBehaviour
         {
             death();           
         }
+    }
+    public void SetHaveItem()
+    {
+        hasItem = true;
     }
 }

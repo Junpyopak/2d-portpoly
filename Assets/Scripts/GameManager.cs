@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("아이템드롭")]
     [SerializeField, Range(0.0f, 100.0f)] float itemDropRate = 0.0f;//0.0~100.0f
-    [SerializeField] GameObject item;
-
+    [SerializeField] List<GameObject> listItem;
+    public static GameManager Instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void DropItem(Vector3 _pos)
-    {      
-        Instantiate(item, _pos, Quaternion.identity);
+    {
+        int raniNum = Random.Range(0, listItem.Count);//0~1
+        GameObject obj = listItem[raniNum];
+        Instantiate(obj, _pos, Quaternion.identity);
     }
+
 }

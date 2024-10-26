@@ -75,7 +75,7 @@ public class MonsterHp : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(monster);
-            //Spawn.Instance.enemyCount--;//스폰 스크립트에 있는 몬스터 카운트가 --된다.
+            spawnSc.enemyCount--;//스폰 스크립트에 있는 몬스터 카운트가 --된다.
             if ((hasItem == true) && dropItem == false)//내가 아이템을 보유하고 있고 드랍하지 않았다면
             {
                 dropItem = true;

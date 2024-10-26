@@ -15,6 +15,9 @@ public class Monster : MonoBehaviour
     [SerializeField] bool GetDamage;
     [SerializeField] float speed;
     MonsterHp monsterHpSc;
+    //ryu
+    [SerializeField]
+    float curHP = 0f;
     [SerializeField] bool isGround;
     [SerializeField] bool checkWAll = false;
 
@@ -24,8 +27,16 @@ public class Monster : MonoBehaviour
         anim = GetComponent<Animator>();
         // boxCol = GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
-        monsterHpSc = GameObject.Find("CanvasHp").GetComponent<MonsterHp>();
+
+        //ryu
+        //solution
+        //monsterHpSc = GameObject.Find("CanvasHp").GetComponent<MonsterHp>();
+        monsterHpSc = this.gameObject.GetComponentInChildren<MonsterHp>();
+
         movChBox = transform.GetChild(0).GetComponent<Collider2D>();
+
+        //ryu
+        curHP = monsterHpSc.curHp;
     }
 
     // Update is called once per frame
@@ -96,10 +107,16 @@ public class Monster : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //ryu
         if (collision.CompareTag("Weapon"))
         {
             monsterHpSc.Hit(1);
             Damage();
+
+            //ryu
+            curHP = monsterHpSc.curHp;
+
+            
         }
 
     }

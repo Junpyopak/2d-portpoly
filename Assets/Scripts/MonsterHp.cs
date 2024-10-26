@@ -10,7 +10,9 @@ public class MonsterHp : MonoBehaviour
 {
     private Image Hp;
     [SerializeField] GameObject monster;
-    [SerializeField] float curHp = 10;
+    //[SerializeField] float curHp = 10;
+    //ryu
+    [SerializeField] public float curHp = 10;
     [SerializeField] float maxHp = 10;
     private float deathTime = 1.45f;
     
@@ -32,6 +34,7 @@ public class MonsterHp : MonoBehaviour
     }
     void Start()
     {
+        //ryu
         monsterSc = monster.GetComponent<Monster>();
         spawnSc = GameObject.Find("SpawnPoint").GetComponent<Spawn>();
         anim = monster.GetComponent<Animator>();
@@ -66,12 +69,13 @@ public class MonsterHp : MonoBehaviour
             }
         }
     }
-    private void death()
+    private void death()//몬스터가 죽을때 ui
     {
-        if(Hp.fillAmount <= 0)
+        if(Hp.fillAmount <= 0)//체력이 다 소진하면 몬스터는 죽고
         {
             Destroy(gameObject);
             Destroy(monster);
+           // Spawn.Instance.enemyCount--;//스폰 스크립트에 있는 몬스터 카운트가 --된다.
             if ((hasItem == true) && dropItem == false)//내가 아이템을 보유하고 있고 드랍하지 않았다면
             {
                 dropItem = true;
@@ -83,10 +87,13 @@ public class MonsterHp : MonoBehaviour
 
     public void Hit(float _damage)
     {
-
-        monsterSc.Damage();
+        //solution
+        //monsterSc.Damage();
+        //ryu
         curHp -= _damage;
-        
+        Debug.Log($"<color='red'>damage {this.gameObject.name}</color>");
+
+
         if (curHp <= 0)
         {
             death();           

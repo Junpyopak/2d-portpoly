@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
 
     public void DropItem(Vector3 _pos)
     {
-        int raniNum = Random.Range(0, listItem.Count);//0~1
-        GameObject obj = listItem[raniNum];
+        int raniNum = Random.Range(0, listItem.Count);//0~리스트에 있는 숫자까지
+        GameObject obj = listItem[0];
         Instantiate(obj, _pos, Quaternion.identity);
     }
 

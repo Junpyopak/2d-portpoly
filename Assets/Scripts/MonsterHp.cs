@@ -8,6 +8,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class MonsterHp : MonoBehaviour
 {
+    public Transform itemPOS;
     private Image Hp;
     [SerializeField] GameObject monster;
     //[SerializeField] float curHp = 10;
@@ -15,9 +16,9 @@ public class MonsterHp : MonoBehaviour
     [SerializeField] public float curHp = 10;
     [SerializeField] float maxHp = 10;
     private float deathTime = 1.45f;
-    
+
     // Start is called before the first frame update
-    
+
     [SerializeField] bool GetDamage;
     [SerializeField] GameObject item;
 
@@ -30,7 +31,7 @@ public class MonsterHp : MonoBehaviour
     private void Awake()
     {
         Hp = transform.Find("Hp").GetComponent<Image>();
-        
+
     }
     void Start()
     {
@@ -53,14 +54,14 @@ public class MonsterHp : MonoBehaviour
     {
         Vector3 hpPos = monster.transform.position;//몬스터의 위치, 월드 포지션
         //Camera.main.WorldToScreenPoint(hpPos);
-        hpPos.x += 0.21f;
+        hpPos.x += 0.27f;
         hpPos.y += 0.93f;
         transform.position = hpPos;
     }
     private void checkHp()
     {
-        float valueHp = curHp/maxHp;
-        if(Hp.fillAmount >valueHp) 
+        float valueHp = curHp / maxHp;
+        if (Hp.fillAmount > valueHp)
         {
             Hp.fillAmount -= Time.deltaTime;
             if (Hp.fillAmount <= valueHp)
@@ -71,7 +72,7 @@ public class MonsterHp : MonoBehaviour
     }
     private void death()//몬스터가 죽을때 ui
     {
-        if(Hp.fillAmount <= 0)//체력이 다 소진하면 몬스터는 죽고
+        if (Hp.fillAmount <= 0)//체력이 다 소진하면 몬스터는 죽고
         {
             Destroy(gameObject);
             Destroy(monster);
@@ -79,7 +80,8 @@ public class MonsterHp : MonoBehaviour
             if ((hasItem == true) && dropItem == false)//내가 아이템을 보유하고 있고 드랍하지 않았다면
             {
                 dropItem = true;
-                GameManager.Instance.DropItem(transform.position);
+                Vector2 dropPos = itemPOS.position;
+                GameManager.Instance.DropItem(dropPos);
             }
         }
     }
@@ -96,7 +98,7 @@ public class MonsterHp : MonoBehaviour
 
         if (curHp <= 0)
         {
-            death();           
+            death();
         }
     }
     public void SetHaveItem()

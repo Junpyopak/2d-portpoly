@@ -28,7 +28,7 @@ public class Spawn : MonoBehaviour
     [SerializeField] GameObject item;
     private void Start()
     {
-
+        enemyCount = 1;//처음 시작했을떄 적 수를 정해놔서 그 이상으로 올라갔을때 리스폰 함수가 안돌아가게끔
 
     }
     private void Update()

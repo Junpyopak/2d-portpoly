@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c442bc0684b022748b68e46447c4062e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPOS: {fileID: 4079498267398096370}
   monster: {fileID: 4357819566742042324}
   curHp: 10
   maxHp: 10

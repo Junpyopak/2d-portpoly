@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -20,11 +19,9 @@ public class MonsterHp : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] bool GetDamage;
-    [SerializeField] GameObject item;
-
+   
     [Header("아이템")]
-    [SerializeField] bool hasItem = false;//아이템을 가지고 있는지
-    public bool dropItem = false;//아이템을 드롭했는지
+    public GameObject item;
     Animator anim;
     Monster monsterSc;
     Spawn spawnSc;
@@ -39,6 +36,7 @@ public class MonsterHp : MonoBehaviour
         monsterSc = monster.GetComponent<Monster>();
         spawnSc = GameObject.Find("SpawnPoint").GetComponent<Spawn>();
         anim = monster.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -74,15 +72,36 @@ public class MonsterHp : MonoBehaviour
     {
         if (Hp.fillAmount <= 0)//체력이 다 소진하면 몬스터는 죽고
         {
+            int ranItem = Random.Range(0, 10);
+            if(ranItem<5)//50프로확률로 아이템 안나옴
+            {
+                Debug.Log("아이템이 안나왔습니다.");
+            }
+            else if(ranItem<8)//30프로확률로 아이템드랍
+            {
+                Instantiate(item,transform.position, Quaternion.identity);
+                Debug.Log("아이템이 나왔습니다.");
+            }
+            else if(ranItem < 9)//10프로확률로 나중에 넣을 아이템 드랍을 위한 코드
+            {
+                Instantiate(item, transform.position, Quaternion.identity);
+                Debug.Log("아이템이 나왔습니다.");
+            }
+            else if(ranItem < 10)//
+            {
+                Instantiate(item, transform.position, Quaternion.identity);
+                Debug.Log("아이템이 나왔습니다.");
+            }
             Destroy(gameObject);
             Destroy(monster);
             spawnSc.enemyCount--;//스폰 스크립트에 있는 몬스터 카운트가 --된다.
-            if ((hasItem == true) && dropItem == false)//내가 아이템을 보유하고 있고 드랍하지 않았다면
-            {
-                dropItem = true;
-                Vector2 dropPos = itemPOS.position;
-                GameManager.Instance.DropItem(dropPos);
-            }
+            //if ((hasItem == true) && dropItem == false)//내가 아이템을 보유하고 있고 드랍하지 않았다면
+            //{
+            //    dropItem = true;
+            //    Vector3 dropPos = itemPOS.transform.position;
+            //    GameManager.Instance.DropItem(dropPos);
+            //}
+
         }
     }
 
@@ -100,9 +119,5 @@ public class MonsterHp : MonoBehaviour
         {
             death();
         }
-    }
-    public void SetHaveItem()
-    {
-        hasItem = true;
     }
 }

@@ -10335,11 +10335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215377920463236568, guid: 778b680ad6404df40be7654df283d54c, type: 3}
       propertyPath: curHp
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9215377920463236568, guid: 778b680ad6404df40be7654df283d54c, type: 3}
       propertyPath: maxHp
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

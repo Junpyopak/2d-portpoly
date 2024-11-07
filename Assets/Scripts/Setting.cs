@@ -75,6 +75,7 @@ public class Setting : MonoBehaviour
     {
         
         gameoverMenu.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
+        //Time.timeScale = 0;
     }
 }

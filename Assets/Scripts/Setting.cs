@@ -11,13 +11,18 @@ public class Setting : MonoBehaviour
     [SerializeField] GameObject objKeySet;
     [SerializeField] GameObject objExplanSetting; 
     [SerializeField] GameObject objExplanJump;
+    [SerializeField] GameObject gameoverMenu;
     int text = 0;
     // Start is called before the first frame update
+
+    PlayerHp playerHpsc;
     void Start()
     {
         Time.timeScale = 1;
         objSetting.SetActive(false);
         objKeySet.SetActive(false);
+        gameoverMenu.SetActive(false);
+        playerHpsc = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
     }
 
     // Update is called once per frame
@@ -65,5 +70,11 @@ public class Setting : MonoBehaviour
     {
         objKeySet.SetActive(false);
         objSetting.SetActive(true);
+    }
+    public void overMenu()
+    {
+        
+        gameoverMenu.SetActive(true);
+        Time.timeScale = 0;
     }
 }

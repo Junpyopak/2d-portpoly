@@ -14,7 +14,7 @@ public class PlayerHp : MonoBehaviour
     public float CurHp => curHp;//밖에서 참조할수 있지만 읽기전용으로만 가져올수 있음.
     [SerializeField] float maxHp = 20;
     Player player;
-
+    Setting setting;
     [SerializeField] bool GetDamage;
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class PlayerHp : MonoBehaviour
     {
         //player = gameObject.GetComponent<Player>();//null
         player = GameObject.Find("Player").GetComponent<Player>();
+        setting = GameObject.Find("GameManager").GetComponent<Setting>();
         
     }
 
@@ -56,8 +57,10 @@ public class PlayerHp : MonoBehaviour
         if(curHp <= 0) 
         {
             curHp = 0;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             player.death();
+            setting.overMenu();
+
         }
     }
 

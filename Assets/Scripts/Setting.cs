@@ -39,7 +39,6 @@ public class Setting : MonoBehaviour
             {
                 objSetting.SetActive(true);
                 objExplanSetting.SetActive(false);
-                objExplanJump.SetActive(true);
                 Time.timeScale = 0;
             }
         }
@@ -77,5 +76,12 @@ public class Setting : MonoBehaviour
         gameoverMenu.SetActive(true);
         Time.timeScale = 1;
         //Time.timeScale = 0;
+    }
+    public void respawn()
+    {
+        if(SceneManager.GetActiveScene().name == "TutorialScene")
+        {
+            Debug.Log("다시하기");
+        }
     }
 }

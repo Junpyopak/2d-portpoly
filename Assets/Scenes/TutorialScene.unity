@@ -496,7 +496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5142902dec493cd469f78725210367d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverMenu: {fileID: 158739214}
 --- !u!1 &233825300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,8 +1367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -79, y: -99.8}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -81.8, y: -99.8}
+  m_SizeDelta: {x: 330, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708857846
 MonoBehaviour:
@@ -1391,7 +1390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0AC\uB2E4\uB9AC \uD0C0\uAE30"
+  m_text: "\uC0AC\uB2E4\uB9AC \uC624\uB974 \uB0B4\uB9AC\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bd314980c9557747971671d481f6db6, type: 2}
   m_sharedMaterial: {fileID: 7823812299440798565, guid: 8bd314980c9557747971671d481f6db6, type: 2}
@@ -1426,7 +1425,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1607,7 +1606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Alt  + \u2191"
+  m_text: "C  + \u2191  or \u2193"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4805,7 +4804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB9AC\uC2A4\uD3F0"
+  m_text: "\uB2E4\uC2DC\uD558\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bd314980c9557747971671d481f6db6, type: 2}
   m_sharedMaterial: {fileID: 7823812299440798565, guid: 8bd314980c9557747971671d481f6db6, type: 2}
@@ -7021,7 +7020,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 793216130}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
-        m_MethodName: MainonClick
+        m_MethodName: respawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8429,7 +8428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: C
+  m_text: V
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8962,7 +8961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Alt
+  m_text: C
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

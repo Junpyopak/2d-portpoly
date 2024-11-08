@@ -60,8 +60,6 @@ public class PlayerHp : MonoBehaviour
             gameObject.SetActive(false);
             player.death();
             setting.overMenu();
-            Destroy(gameObject);
-
         }
     }
 

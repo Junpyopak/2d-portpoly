@@ -16,6 +16,7 @@ public class Setting : MonoBehaviour
     // Start is called before the first frame update
 
     PlayerHp playerHpsc;
+    Respawn Respawn;
     void Start()
     {
         Time.timeScale = 1;
@@ -23,6 +24,8 @@ public class Setting : MonoBehaviour
         objKeySet.SetActive(false);
         gameoverMenu.SetActive(false);
         playerHpsc = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
+        Respawn = GameObject.Find("ReSpawn").GetComponent<Respawn>();
+
     }
 
     // Update is called once per frame
@@ -82,6 +85,10 @@ public class Setting : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "TutorialScene")
         {
             Debug.Log("다시하기");
+            gameoverMenu.SetActive(false);
+            Respawn.destroy();
+            Respawn.spawn();
+            
         }
     }
 }

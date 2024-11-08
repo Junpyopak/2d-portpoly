@@ -9,7 +9,7 @@ public class MapCam : MonoBehaviour
     [SerializeField] Bounds curBound;
     [SerializeField] BoxCollider2D boxColl;
 
-    [SerializeField] Transform trsPlayer;
+    public Transform trsPlayer;
     [SerializeField] float camSpeed = 1;
 
     void Start()

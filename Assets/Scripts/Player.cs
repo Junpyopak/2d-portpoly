@@ -80,14 +80,17 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        checkPos();
         if (playerHp.CurHp <= 0) return;//player.hp에 hp 값을 가져와 0이라면 리턴처리해서 아래 코드들의 기능이 못돌아가게끔.
 
         moving();
+        Jumping();
+        Attack();
     }
     // Update is called once per frame
     void Update()
     {
-        checkPos();
+        
         if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
             ExplanMove();

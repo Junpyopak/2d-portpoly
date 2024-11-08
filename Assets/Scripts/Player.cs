@@ -16,9 +16,9 @@ public class Player : MonoBehaviour
     Vector2 movePos;
     [SerializeField] float JumpForce = 3;
 
-     float CurHp = 20;
-     float MaxHp = 20;
-    public  float atkDam = 3;//플레이어의 공격력
+    float CurHp = 20;
+    float MaxHp = 20;
+    public float atkDam = 3;//플레이어의 공격력
 
     int curText = 0;
     int atkCount = 0;
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         checkPos();
-        if (playerHp.CurHp <= 0) return;//player.hp에 hp 값을 가져와 0이라면 리턴처리해서 아래 코드들의 기능이 못돌아가게끔.
+        if (playerHp.curHp <= 0) return;//player.hp에 hp 값을 가져와 0이라면 리턴처리해서 아래 코드들의 기능이 못돌아가게끔.
 
         moving();
         Jumping();
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (SceneManager.GetActiveScene().name == "TutorialScene")
         {
             ExplanMove();
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
 
         Jumping();
         Attack();
-        
+
         //checkLadder();
         //if (isladder == true && Input.GetKey(KeyCode.UpArrow))// || Input.GetKeyDown(KeyCode.DownArrow))
         //{
@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
 
     private void StartAttck1()//플레이어 2단 공격을 위해 플레이어가 공격 키를 눌렀을때 attack1이 트루가 되고
     {
-        attack1 = true; 
+        attack1 = true;
         AtkBox.enabled = true;//플레이어가 공격을 시작했을때 atk1의 박스 콜을 활성화 하여 적이 닿으면 데미지를받게
     }
 
@@ -345,7 +345,7 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-       anim.SetTrigger("damage");         
+        anim.SetTrigger("damage");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -368,15 +368,15 @@ public class Player : MonoBehaviour
             ableDownAction = true;
         }
 
-        if(collision.CompareTag("Enemy"))
-        {           
+        if (collision.CompareTag("Enemy"))
+        {
             playerHp.Hit(1);
             Damage();
         }
 
     }
 
-   
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Ladders"))
@@ -396,5 +396,11 @@ public class Player : MonoBehaviour
     public void death()//플레이어 체력바에서 체력바의 값이 0이 된다면 플레이어의 체력이 다해 죽음 에님을실행.
     {
         anim.SetTrigger("DoDeath");
+    }
+
+    public void resPawn()
+    {
+        
+        anim.SetTrigger("reSpawn");
     }
 }

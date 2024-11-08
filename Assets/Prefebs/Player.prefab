@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8392706621147501476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.24, y: -2.78, z: 0}
+  m_LocalPosition: {x: 17.9, y: -2.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -346,7 +346,7 @@ MonoBehaviour:
   getitem: 0
   minScreen: {x: 0, y: 0}
   maxScreen: {x: 1, y: 1}
-  cam: {fileID: 151655914976666766, guid: 1a0a6013ba2ad1d469fb38e28621203a, type: 3}
+  cam: {fileID: 0}
   objExplanMove: {fileID: 1854816103569975695, guid: cf1e76f1313b9774f809bcfd152e7320, type: 3}
   objExplanSetting: {fileID: 4417295567283854947, guid: 718883eeef5b88d4e83a22a34726154f, type: 3}
   objExplanJump: {fileID: 1960936058250280331, guid: eddd723435531e146b523fe91d586c63, type: 3}

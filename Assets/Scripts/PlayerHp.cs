@@ -10,8 +10,8 @@ public class PlayerHp : MonoBehaviour
 
     private Image Hp;
     
-    [SerializeField] float curHp = 20;
-    public float CurHp => curHp;//밖에서 참조할수 있지만 읽기전용으로만 가져올수 있음.
+    public float curHp = 20;
+    //public float CurHp => curHp;//밖에서 참조할수 있지만 읽기전용으로만 가져올수 있음.
     [SerializeField] float maxHp = 20;
     Player player;
     Setting setting;

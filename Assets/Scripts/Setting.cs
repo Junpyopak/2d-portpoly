@@ -17,6 +17,7 @@ public class Setting : MonoBehaviour
 
     PlayerHp playerHpsc;
     Respawn Respawn;
+    Player player;
     void Start()
     {
         Time.timeScale = 1;
@@ -25,6 +26,7 @@ public class Setting : MonoBehaviour
         gameoverMenu.SetActive(false);
         playerHpsc = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
         Respawn = GameObject.Find("ReSpawn").GetComponent<Respawn>();
+        player = GameObject.Find("Player").GetComponent<Player>();
 
     }
 
@@ -86,8 +88,9 @@ public class Setting : MonoBehaviour
         {
             Debug.Log("다시하기");
             gameoverMenu.SetActive(false);
-            Respawn.destroy();
+            //Respawn.destroy();
             Respawn.spawn();
+            player.resPawn();
             
         }
     }
